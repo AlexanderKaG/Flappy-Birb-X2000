@@ -5,9 +5,9 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
-public class App extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
+public class JumpyBirb extends ApplicationAdapter {
+	private SpriteBatch batch;
+	private Texture img;
 	
 	@Override
 	public void create () {
