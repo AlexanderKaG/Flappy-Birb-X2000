@@ -20,8 +20,6 @@ public class JumpyBirb extends ApplicationAdapter {
 		birb = new Rectangle();
 		birb.x = 100;
 		birb.y = 400;
-		birb.width = 64;
-		birb.height = 64;
 	}
 
 	@Override
