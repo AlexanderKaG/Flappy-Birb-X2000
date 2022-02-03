@@ -11,6 +11,8 @@ public class JumpyBirb extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Texture img;
 	private Rectangle birb;
+	private static final float GRAVITY = 0.2f;
+	private float velocity = 0.0f;
 	
 	@Override
 	public void create () {
@@ -28,9 +30,11 @@ public class JumpyBirb extends ApplicationAdapter {
 
 		batch.begin();
 		batch.draw(img, birb.x, birb.y);
-		batch.end();
 
-		birb.y -= 500 * Gdx.graphics.getDeltaTime();
+		velocity += GRAVITY;
+		birb.y -= velocity;
+
+		batch.end();
 	}
 	
 	@Override
