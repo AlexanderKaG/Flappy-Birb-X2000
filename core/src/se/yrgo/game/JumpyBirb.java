@@ -18,7 +18,7 @@ public class JumpyBirb extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture(Gdx.files.internal("badlogic.jpg"));
+		img = new Texture(Gdx.files.internal("Bird.png"));
 
 		birb = new Rectangle();
 		birb.x = 100;
