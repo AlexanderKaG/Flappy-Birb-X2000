@@ -2,6 +2,7 @@ package se.yrgo.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
@@ -33,8 +34,15 @@ public class JumpyBirb extends ApplicationAdapter {
 
 		velocity += GRAVITY;
 		birb.y -= velocity;
+		jump();
 
 		batch.end();
+	}
+
+	public void jump() {
+		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+			velocity = -5;
+		}
 	}
 	
 	@Override
