@@ -40,7 +40,7 @@ public class JumpyBirb extends ApplicationAdapter {
 	}
 
 	public void jump() {
-		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
 			velocity = -5;
 		}
 	}
