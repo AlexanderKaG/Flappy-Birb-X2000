@@ -19,7 +19,6 @@ public class JumpyBirb extends ApplicationAdapter {
 
 		birb = new Birb();
 		birb.create();
-
 	}
 
 	@Override
@@ -38,5 +37,6 @@ public class JumpyBirb extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
+		birb.getImg().dispose();
 	}
 }

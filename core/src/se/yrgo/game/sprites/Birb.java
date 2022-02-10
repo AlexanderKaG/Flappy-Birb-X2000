@@ -37,8 +37,4 @@ public class Birb {
     public Rectangle getPosition() {
         return position;
     }
-
-    public void dispose() {
-        img.dispose();
-    }
 }
