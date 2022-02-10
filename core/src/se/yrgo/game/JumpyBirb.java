@@ -7,22 +7,19 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
+import se.yrgo.game.sprites.Birb;
 
 public class JumpyBirb extends ApplicationAdapter {
 	private SpriteBatch batch;
-	private Texture img;
-	private Rectangle birb;
-	private static final float GRAVITY = 0.2f;
-	private float velocity = 0.0f;
+	private Birb birb;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture(Gdx.files.internal("Bird.png"));
 
-		birb = new Rectangle();
-		birb.x = 100;
-		birb.y = 400;
+		birb = new Birb();
+		birb.create();
+
 	}
 
 	@Override
@@ -30,24 +27,16 @@ public class JumpyBirb extends ApplicationAdapter {
 		ScreenUtils.clear(1, 0, 0, 1);
 
 		batch.begin();
-		batch.draw(img, birb.x, birb.y);
+		batch.draw(birb.getImg(), birb.getPosition().x, birb.getPosition().y);
 
-		velocity += GRAVITY;
-		birb.y -= velocity;
-		jump();
+		birb.update();
+		birb.jump();
 
 		batch.end();
 	}
 
-	public void jump() {
-		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
-			velocity = -5;
-		}
-	}
-	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
 	}
 }
