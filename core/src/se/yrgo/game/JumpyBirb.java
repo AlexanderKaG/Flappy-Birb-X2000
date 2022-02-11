@@ -60,7 +60,7 @@ public class JumpyBirb extends ApplicationAdapter {
 		if (birb.y > 200){
 			GRAVITY = 0;
 			velocity = 0;
-		}else if(birb.y < -200 ){
+		}else if(birb.y < -200){
 			GRAVITY = 0;
 			velocity = 0;
 		}
