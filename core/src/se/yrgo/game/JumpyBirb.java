@@ -8,30 +8,23 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
+import se.yrgo.game.sprites.Birb;
 
 public class JumpyBirb extends ApplicationAdapter {
 	private SpriteBatch batch;
-	private Texture img;
-	private Rectangle birb;
-	private static float GRAVITY = 0.2f;
-	private float velocity = 0.0f;
 	private OrthographicCamera camera;
-	
+	private Birb birb;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture(Gdx.files.internal("Bird.png"));
-
-		birb = new Rectangle();
-		birb.x = -100;
-		birb.y = 200;
-		birb.width = 64;
-		birb.height = 64;
 
 		camera = new OrthographicCamera(); //skapar en kamera
 		camera.setToOrtho(false);
 		camera.position.set(0, 0 ,0); //camerans position
 
+		birb = new Birb();
+		birb.create();
 
 	}
 
@@ -51,33 +44,25 @@ public class JumpyBirb extends ApplicationAdapter {
 		ScreenUtils.clear(1, 0, 0, 1);
 
 		batch.begin();
-		batch.draw(img, birb.x, birb.y);
+		batch.draw(birb.getImg(), birb.getPosition().x, birb.getPosition().y);
 
-		velocity += GRAVITY;
-		birb.y -= velocity;
-		jump();
+		birb.update();
+		birb.jump();
 
-		if (birb.y > 200){
-			GRAVITY = 0;
-			velocity = 0;
-		}else if(birb.y < -200){
-			GRAVITY = 0;
-			velocity = 0;
+		if (birb.getPosition().y > 200){
+			birb.setGRAVITY(0);
+			birb.setVelocity(0);
+		}else if(birb.getPosition().y < -200){
+			birb.setGRAVITY(0);
+			birb.setGRAVITY(0);
 		}
-
 
 		batch.end();
 	}
 
-	public void jump() {
-		if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
-			velocity = -5;
-		}
-	}
-	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		birb.getImg().dispose();
 	}
 }
