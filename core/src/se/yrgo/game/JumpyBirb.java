@@ -12,34 +12,18 @@ import se.yrgo.game.sprites.Birb;
 
 public class JumpyBirb extends ApplicationAdapter {
 	private SpriteBatch batch;
-	private OrthographicCamera camera;
 	private Birb birb;
 
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 
-		camera = new OrthographicCamera(); //skapar en kamera
-		camera.setToOrtho(false);
-		camera.position.set(0, 0 ,0); //camerans position
-
 		birb = new Birb();
 		birb.create();
-
 	}
-
-	@Override
-	public void resize(int widht, int height){ //entiteten behåller sin storlek även om man har fullscreen
-		camera.viewportWidth = 400;
-		camera.viewportHeight = 400;
-	}
-
 
 	@Override
 	public void render () {
-
-		camera.update();
-		batch.setProjectionMatrix(camera.combined);
 
 		ScreenUtils.clear(1, 0, 0, 1);
 
@@ -49,17 +33,10 @@ public class JumpyBirb extends ApplicationAdapter {
 		birb.update();
 		birb.jump();
 
-		if (birb.getPosition().y > 200){
-			birb.setGRAVITY(0);
-			birb.setVelocity(0);
-		}else if(birb.getPosition().y < -200){
-			birb.setGRAVITY(0);
-			birb.setGRAVITY(0);
-		}
-
 		batch.end();
 	}
 
+	// Dispose of used assets to clear up memory
 	@Override
 	public void dispose () {
 		batch.dispose();
