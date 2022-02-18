@@ -12,7 +12,7 @@ public class Birb {
     private float velocity = 0.0f;
 
     public void create() {
-        img = new Texture(Gdx.files.internal("Bird.png"));
+        img = new Texture(Gdx.files.internal("Pixelbird.png"));
 
         position = new Rectangle();
         position.x = 100;
