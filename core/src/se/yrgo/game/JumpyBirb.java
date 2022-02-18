@@ -30,6 +30,10 @@ public class JumpyBirb extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(birb.getImg(), birb.getPosition().x, birb.getPosition().y);
 
+		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+			birb.setGravity(0.2f);
+		}
+
 		birb.update();
 		birb.jump();
 

@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Birb {
     private Texture img;
     private Rectangle position;
-    private float GRAVITY = 0.2f;
+    private float gravity = 0.0f;
     private float velocity = 0.0f;
 
     public void create() {
@@ -20,7 +20,7 @@ public class Birb {
     }
 
     public void update() {
-        velocity += GRAVITY;
+        velocity += gravity;
         position.y -= velocity;
     }
 
@@ -36,6 +36,10 @@ public class Birb {
 
     public Rectangle getPosition() {
         return position;
+    }
+
+    public void setGravity(float gravity) {
+        this.gravity = gravity;
     }
 }
 
