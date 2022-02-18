@@ -37,12 +37,5 @@ public class Birb {
     public Rectangle getPosition() {
         return position;
     }
-
-    public void setGRAVITY(float GRAVITY){
-        this.GRAVITY = GRAVITY;
-    }
-    public void setVelocity(float velocity){
-        this.velocity = velocity;
-    }
 }
 
