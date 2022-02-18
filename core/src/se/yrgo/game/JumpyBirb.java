@@ -49,13 +49,13 @@ public class JumpyBirb extends ApplicationAdapter {
 		birb.update();
 		birb.jump();
 
-		if (birb.getPosition().y > 200){
-			birb.setGRAVITY(0);
-			birb.setVelocity(0);
-		}else if(birb.getPosition().y < -200){
-			birb.setGRAVITY(0);
-			birb.setGRAVITY(0);
-		}
+//		if (birb.getPosition().y > 200){
+//			birb.setGRAVITY(0);
+//			birb.setVelocity(0);
+//		}else if(birb.getPosition().y < -200){
+//			birb.setGRAVITY(0);
+//			birb.setGRAVITY(0);
+//		}
 
 		batch.end();
 	}
