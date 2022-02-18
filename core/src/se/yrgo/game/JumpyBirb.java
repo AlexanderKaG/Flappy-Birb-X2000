@@ -1,8 +1,6 @@
 package se.yrgo.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import se.yrgo.game.sprites.Birb;
@@ -30,9 +28,7 @@ public class JumpyBirb extends ApplicationAdapter {
 		batch.draw(birb.getImg(), birb.getPosition().x, birb.getPosition().y);
 
 		// Activates gravity when space is pressed.
-		if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
-			birb.setGravity(0.2f);
-		}
+		birb.initiateGravity();
 
 		// If Birb hits the ground the game resets.
 		if(birb.getPosition().y < 0) {
@@ -40,9 +36,7 @@ public class JumpyBirb extends ApplicationAdapter {
 			birb.setGravity(0.0f);
 			birb.setVelocity(0.0f);
 
-			if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
-				birb.setGravity(0.2f);
-			}
+			birb.initiateGravity();
 		}
 
 		birb.update();
