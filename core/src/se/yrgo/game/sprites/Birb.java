@@ -41,5 +41,8 @@ public class Birb {
     public void setGravity(float gravity) {
         this.gravity = gravity;
     }
-}
 
+    public void setVelocity(float velocity) {
+        this.velocity = velocity;
+    }
+}
