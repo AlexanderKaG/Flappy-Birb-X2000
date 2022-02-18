@@ -8,7 +8,7 @@ import com.badlogic.gdx.math.Rectangle;
 public class Birb {
     private Texture img;
     private Rectangle position;
-    private float gravity = 0.0f;
+    private float gravity;
     private float velocity = 0.0f;
 
     public void create() {
@@ -27,6 +27,12 @@ public class Birb {
     public void jump() {
         if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
             velocity = -5;
+        }
+    }
+
+    public void initiateGravity() {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
+            this.gravity = 0.2f;
         }
     }
 
