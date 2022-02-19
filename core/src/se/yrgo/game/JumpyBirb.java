@@ -22,7 +22,6 @@ public class JumpyBirb extends ApplicationAdapter {
 
 		obstacle = new Obstacle();
 		obstacle.create();
-
 	}
 
 	@Override
@@ -40,12 +39,13 @@ public class JumpyBirb extends ApplicationAdapter {
 		obstacle.getObstacleBotPosition().x -= obstacle.getObstacleSpeed();
 		obstacle.getObstacleTopPosition().x -= obstacle.getObstacleSpeed();
 
-
 		// Activates gravity when space is pressed.
 		birb.initiateGravity();
 
-		// If Birb hits the ground the game resets.
-		if(birb.getPosition().y < 0) {
+		// If Birb hits the ground or the obstacles the game resets.
+		if(birb.getPosition().y < -10 ||
+				birb.getPosition().x + 100 > obstacle.getObstacleTopPosition().x && birb.getPosition().y + 100 > obstacle.getObstacleTopPosition().y ||
+				birb.getPosition().x + 100 > obstacle.getObstacleBotPosition().x && birb.getPosition().y < obstacle.getObstacleBotPosition().y + 580) {
 			birb.getPosition().setPosition(100, 400);
 			birb.setGravity(0.0f);
 			birb.setVelocity(0.0f);
@@ -53,10 +53,10 @@ public class JumpyBirb extends ApplicationAdapter {
 			birb.initiateGravity();
 		}
 
-		if(obstacle.getObstacleBotPosition().x < -200){
+		if(obstacle.getObstacleBotPosition().x < -200) {
 			int randomNumber = ThreadLocalRandom.current().nextInt(-150, 400);
-			obstacle.getObstacleBotPosition().setPosition(900, randomNumber - 420);
-			obstacle.getObstacleTopPosition().setPosition(900, randomNumber + 420);
+			obstacle.getObstacleBotPosition().setPosition(800, randomNumber - 450);
+			obstacle.getObstacleTopPosition().setPosition(800, randomNumber + 450);
 		}
 
 		birb.update();
