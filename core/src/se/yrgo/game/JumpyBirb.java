@@ -4,10 +4,12 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import se.yrgo.game.sprites.Birb;
+import se.yrgo.game.sprites.Obstacle;
 
 public class JumpyBirb extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Birb birb;
+	private Obstacle obstacle;
 
 	@Override
 	public void create () {
@@ -15,6 +17,10 @@ public class JumpyBirb extends ApplicationAdapter {
 
 		birb = new Birb();
 		birb.create();
+
+		obstacle = new Obstacle();
+		obstacle.create();
+
 	}
 
 	@Override
@@ -25,7 +31,10 @@ public class JumpyBirb extends ApplicationAdapter {
 		ScreenUtils.clear(1, 0, 0, 1);
 
 		batch.begin();
+		batch.draw(obstacle.getObstacleImage(), obstacle.getObstaclePosition().x, obstacle.getObstaclePosition().y);
 		batch.draw(birb.getImg(), birb.getPosition().x, birb.getPosition().y);
+
+		obstacle.getObstaclePosition().x -= obstacle.getObstacleSpeed();
 
 		// Activates gravity when space is pressed.
 		birb.initiateGravity();
@@ -39,6 +48,10 @@ public class JumpyBirb extends ApplicationAdapter {
 			birb.initiateGravity();
 		}
 
+		if(obstacle.getObstaclePosition().x < -50){
+			obstacle.getObstaclePosition().setPosition(900, 0);
+		}
+
 		birb.update();
 		batch.end();
 	}
@@ -48,5 +61,6 @@ public class JumpyBirb extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		birb.getImg().dispose();
+		obstacle.getObstacleImage().dispose();
 	}
 }
