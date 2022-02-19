@@ -6,6 +6,8 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import se.yrgo.game.sprites.Birb;
 import se.yrgo.game.sprites.Obstacle;
 
+import java.util.concurrent.ThreadLocalRandom;
+
 public class JumpyBirb extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Birb birb;
@@ -31,10 +33,13 @@ public class JumpyBirb extends ApplicationAdapter {
 		ScreenUtils.clear(1, 0, 0, 1);
 
 		batch.begin();
-		batch.draw(obstacle.getObstacleImage(), obstacle.getObstaclePosition().x, obstacle.getObstaclePosition().y);
+		batch.draw(obstacle.getObstacleBotImage(), obstacle.getObstacleBotPosition().x, obstacle.getObstacleBotPosition().y);
+		batch.draw(obstacle.getObstacleTopImage(), obstacle.getObstacleTopPosition().x, obstacle.getObstacleTopPosition().y);
 		batch.draw(birb.getImg(), birb.getPosition().x, birb.getPosition().y);
 
-		obstacle.getObstaclePosition().x -= obstacle.getObstacleSpeed();
+		obstacle.getObstacleBotPosition().x -= obstacle.getObstacleSpeed();
+		obstacle.getObstacleTopPosition().x -= obstacle.getObstacleSpeed();
+
 
 		// Activates gravity when space is pressed.
 		birb.initiateGravity();
@@ -48,8 +53,10 @@ public class JumpyBirb extends ApplicationAdapter {
 			birb.initiateGravity();
 		}
 
-		if(obstacle.getObstaclePosition().x < -50){
-			obstacle.getObstaclePosition().setPosition(900, 0);
+		if(obstacle.getObstacleBotPosition().x < -200){
+			int randomNumber = ThreadLocalRandom.current().nextInt(-150, 400);
+			obstacle.getObstacleBotPosition().setPosition(900, randomNumber - 420);
+			obstacle.getObstacleTopPosition().setPosition(900, randomNumber + 420);
 		}
 
 		birb.update();
@@ -61,6 +68,6 @@ public class JumpyBirb extends ApplicationAdapter {
 	public void dispose () {
 		batch.dispose();
 		birb.getImg().dispose();
-		obstacle.getObstacleImage().dispose();
+		obstacle.getObstacleBotImage().dispose();
 	}
 }
