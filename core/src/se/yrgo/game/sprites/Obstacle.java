@@ -21,8 +21,6 @@ public class Obstacle {
         obstacleTopPosition.x = 800;
         obstacleTopPosition.y = 600;
 
-
-
     }
 
     public Texture getObstacleBotImage(){

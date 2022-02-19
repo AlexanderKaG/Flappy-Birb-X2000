@@ -18,7 +18,6 @@ public class Birb {
         position.x = 100;
         position.y = 400;
 
-
     }
 
     public void update() {

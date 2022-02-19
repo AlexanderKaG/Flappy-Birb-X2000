@@ -54,9 +54,9 @@ public class JumpyBirb extends ApplicationAdapter {
 		}
 
 		if(obstacle.getObstacleBotPosition().x < -200){
-			int randomNumber = ThreadLocalRandom.current().nextInt(-500, 600);
-			obstacle.getObstacleBotPosition().setPosition(900, randomNumber);
-			obstacle.getObstacleTopPosition().setPosition(900, randomNumber);
+			int randomNumber = ThreadLocalRandom.current().nextInt(-150, 400);
+			obstacle.getObstacleBotPosition().setPosition(900, randomNumber - 420);
+			obstacle.getObstacleTopPosition().setPosition(900, randomNumber + 420);
 		}
 
 		birb.update();
