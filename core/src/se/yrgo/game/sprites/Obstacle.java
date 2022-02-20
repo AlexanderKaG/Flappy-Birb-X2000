@@ -25,6 +25,12 @@ public class Obstacle {
         obstacleTopPosition.height = 600;
     }
 
+    // Updates the obstacles position on the x-axis
+    public void update() {
+        obstacleBotPosition.x -= obstacleSpeed;
+        obstacleTopPosition.x -= obstacleSpeed;
+    }
+
     public Texture getObstacleBotImage(){
         return obstacleBotImage;
     }
@@ -41,7 +47,8 @@ public class Obstacle {
         return obstacleTopPosition;
     }
 
-    public int getObstacleSpeed(){
-        return obstacleSpeed;
+    public void dispose() {
+        obstacleBotImage.dispose();
+        obstacleTopImage.dispose();
     }
 }
