@@ -17,7 +17,6 @@ public class Birb {
         position = new Rectangle();
         position.x = 100;
         position.y = 400;
-
     }
 
     public void update() {
@@ -51,5 +50,9 @@ public class Birb {
 
     public void setVelocity(float velocity) {
         this.velocity = velocity;
+    }
+
+    public void dispose() {
+        img.dispose();
     }
 }
