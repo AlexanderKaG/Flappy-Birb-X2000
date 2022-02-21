@@ -45,14 +45,7 @@ public class JumpyBirb extends ApplicationAdapter {
         birb.initiateGravity();
 
         // If Birb hits the ground or the obstacles the game resets.
-        if (birb.getPosition().y < -20 ||
-                birb.getPosition().x > obstacle.getObstacleTopPosition().x - 100
-                        && birb.getPosition().y > obstacle.getObstacleTopPosition().y - 100
-                        && birb.getPosition().x < obstacle.getObstacleTopPosition().x + 200 ||
-                birb.getPosition().x > obstacle.getObstacleBotPosition().x - 100
-                        && birb.getPosition().y < obstacle.getObstacleBotPosition().y + 580
-                        && birb.getPosition().x < obstacle.getObstacleBotPosition().x + 200) {
-
+        if (hitsGround(birb) || hitsTopObstacle(birb, obstacle) || hitsBotObstacle(birb, obstacle)) {
             birb.getPosition().setPosition(100, 400);
             birb.setGravity(0.0f);
             birb.setVelocity(0.0f);
@@ -70,9 +63,34 @@ public class JumpyBirb extends ApplicationAdapter {
     }
 
     private void handleUserInput() {
-        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
             birb.jump();
         }
+    }
+
+    private static boolean hitsGround(Birb birb) {
+        if (birb.getPosition().y < -20) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean hitsTopObstacle(Birb birb, Obstacle obstacle) {
+        if (birb.getPosition().x > obstacle.getObstacleTopPosition().x - 100
+                && birb.getPosition().y > obstacle.getObstacleTopPosition().y - 100
+                && birb.getPosition().x < obstacle.getObstacleTopPosition().x + 200) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean hitsBotObstacle(Birb birb, Obstacle obstacle) {
+        if (birb.getPosition().x > obstacle.getObstacleBotPosition().x - 100
+                && birb.getPosition().y < obstacle.getObstacleBotPosition().y + 580
+                && birb.getPosition().x < obstacle.getObstacleBotPosition().x + 200) {
+            return true;
+        }
+        return false;
     }
 
     // Dispose of used assets to clear up memory
