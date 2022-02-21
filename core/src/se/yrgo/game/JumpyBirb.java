@@ -1,6 +1,8 @@
 package se.yrgo.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import se.yrgo.game.sprites.Birb;
@@ -26,8 +28,8 @@ public class JumpyBirb extends ApplicationAdapter {
 
     @Override
     public void render() {
-        // Adds the function to jump with space/mouse
-        birb.jump();
+        // Calls the function to jump when user press space/mouse click
+        handleUserInput();
 
         ScreenUtils.clear(1, 0, 0, 1);
 
@@ -65,6 +67,12 @@ public class JumpyBirb extends ApplicationAdapter {
         }
 
         batch.end();
+    }
+
+    private void handleUserInput() {
+        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
+            birb.jump();
+        }
     }
 
     // Dispose of used assets to clear up memory

@@ -25,9 +25,7 @@ public class Birb {
     }
 
     public void jump() {
-        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
-            velocity = -5;
-        }
+        velocity = -5;
     }
 
     public void initiateGravity() {
