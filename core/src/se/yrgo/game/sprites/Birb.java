@@ -6,43 +6,53 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Birb {
-    private Texture img;
-    private Rectangle position;
-    private float GRAVITY = 0.2f;
+    private Texture birbImage;
+    private Rectangle birbPosition;
+    private float gravity;
     private float velocity = 0.0f;
 
     public void create() {
-        img = new Texture(Gdx.files.internal("Bird.png"));
+        birbImage = new Texture(Gdx.files.internal("Pixelbird.png"));
 
-        position = new Rectangle();
-        position.x = 100;
-        position.y = 400;
+        birbPosition = new Rectangle();
+        birbPosition.x = 100;
+        birbPosition.y = 400;
+        birbPosition.width = 100;
+        birbPosition.height = 100;
     }
 
     public void update() {
-        velocity += GRAVITY;
-        position.y -= velocity;
+        velocity += gravity;
+        birbPosition.y -= velocity;
     }
 
     public void jump() {
-        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
-            velocity = -5;
+        velocity = -5;
+    }
+
+    public void initiateGravity() {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
+            this.gravity = 0.2f;
         }
     }
 
-    public Texture getImg() {
-        return img;
+    public Texture getBirbImageg() {
+        return birbImage;
     }
 
-    public Rectangle getPosition() {
-        return position;
+    public Rectangle getBirbPosition() {
+        return birbPosition;
     }
 
-    public void setGRAVITY(float GRAVITY){
-        this.GRAVITY = GRAVITY;
+    public void setGravity(float gravity) {
+        this.gravity = gravity;
     }
-    public void setVelocity(float velocity){
+
+    public void setVelocity(float velocity) {
         this.velocity = velocity;
     }
-}
 
+    public void dispose() {
+        birbImage.dispose();
+    }
+}

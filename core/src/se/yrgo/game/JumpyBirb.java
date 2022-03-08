@@ -3,66 +3,89 @@ package se.yrgo.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import se.yrgo.game.sprites.Birb;
+import se.yrgo.game.sprites.Obstacle;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class JumpyBirb extends ApplicationAdapter {
-	private SpriteBatch batch;
-	private OrthographicCamera camera;
-	private Birb birb;
+    private SpriteBatch batch;
+    private Birb birb;
+    private Obstacle obstacle;
+    private int score;
 
-	@Override
-	public void create () {
-		batch = new SpriteBatch();
+    @Override
+    public void create() {
+        batch = new SpriteBatch();
 
-		camera = new OrthographicCamera(); //skapar en kamera
-		camera.setToOrtho(false);
-		camera.position.set(0, 0 ,0); //camerans position
+        birb = new Birb();
+        birb.create();
 
-		birb = new Birb();
-		birb.create();
+        obstacle = new Obstacle();
+        obstacle.create();
+    }
 
-	}
+    @Override
+    public void render() {
+        // Calls the function to jump when user press space/mouse click
+        handleUserInput();
 
-	@Override
-	public void resize(int widht, int height){ //entiteten behåller sin storlek även om man har fullscreen
-		camera.viewportWidth = 400;
-		camera.viewportHeight = 400;
-	}
+        ScreenUtils.clear(1, 0, 0, 1);
+
+        batch.begin();
+        batch.draw(obstacle.getObstacleBotImage(), obstacle.getObstacleBotPosition().x, obstacle.getObstacleBotPosition().y);
+        batch.draw(obstacle.getObstacleTopImage(), obstacle.getObstacleTopPosition().x, obstacle.getObstacleTopPosition().y);
+        batch.draw(birb.getBirbImageg(), birb.getBirbPosition().x, birb.getBirbPosition().y);
+
+        obstacle.update();
+        birb.update();
+
+        // Activates gravity when space is pressed.
+        birb.initiateGravity();
+
+        if (hitsGround(birb) ||
+                birb.getBirbPosition().overlaps(obstacle.getObstacleBotPosition()) ||
+                birb.getBirbPosition().overlaps(obstacle.getObstacleTopPosition())) {
+            birb.getBirbPosition().setPosition(100, 400);
+            birb.setGravity(0.0f);
+            birb.setVelocity(0.0f);
+
+            score = 0;
+            birb.initiateGravity();
+
+        } else if (obstacle.getObstacleBotPosition().x == birb.getBirbPosition().x - birb.getBirbPosition().width) {
+            score++;
+            System.out.println("Score " + score);
+        }
+
+        if (obstacle.getObstacleBotPosition().x < -200) {
+            int randomNumber = ThreadLocalRandom.current().nextInt(-150, 400);
+            obstacle.getObstacleBotPosition().setPosition(800, randomNumber - 450);
+            obstacle.getObstacleTopPosition().setPosition(800, randomNumber + 450);
+        }
+
+        batch.end();
+    }
 
 
-	@Override
-	public void render () {
+    private void handleUserInput() {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
+            birb.jump();
+        }
+    }
 
-		camera.update();
-		batch.setProjectionMatrix(camera.combined);
+    private static boolean hitsGround(Birb birb) {
+        if (birb.getBirbPosition().y < -20) {
+            return true;
+        }
+        return false;
+    }
 
-		ScreenUtils.clear(1, 0, 0, 1);
-
-		batch.begin();
-		batch.draw(birb.getImg(), birb.getPosition().x, birb.getPosition().y);
-
-		birb.update();
-		birb.jump();
-
-//		if (birb.getPosition().y > 200){
-//			birb.setGRAVITY(0);
-//			birb.setVelocity(0);
-//		}else if(birb.getPosition().y < -200){
-//			birb.setGRAVITY(0);
-//			birb.setGRAVITY(0);
-//		}
-
-		batch.end();
-	}
-
-	@Override
-	public void dispose () {
-		batch.dispose();
-		birb.getImg().dispose();
-	}
+    // Dispose of used assets to clear up memory
+    @Override
+    public void dispose() {
+        batch.dispose();
+    }
 }
