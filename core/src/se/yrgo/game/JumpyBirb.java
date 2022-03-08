@@ -1,6 +1,5 @@
 package se.yrgo.game;
 
-import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
@@ -14,9 +13,9 @@ import java.util.concurrent.ThreadLocalRandom;
 public class JumpyBirb implements Screen {
     private final JumpyBirbGame game;
 
-    private SpriteBatch batch;
-    private Birb birb;
-    private Obstacle obstacle;
+    private final SpriteBatch batch;
+    private final Birb birb;
+    private final Obstacle obstacle;
     private int score;
 
     public JumpyBirb(final JumpyBirbGame game) {

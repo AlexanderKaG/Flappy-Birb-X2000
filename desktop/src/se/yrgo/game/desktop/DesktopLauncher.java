@@ -2,7 +2,6 @@ package se.yrgo.game.desktop;
 
 import com.badlogic.gdx.backends.lwjgl.LwjglApplication;
 import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration;
-import se.yrgo.game.JumpyBirb;
 import se.yrgo.game.JumpyBirbGame;
 
 public class DesktopLauncher {
