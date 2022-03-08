@@ -52,7 +52,9 @@ public class JumpyBirb extends ApplicationAdapter {
             birb.setGravity(0.0f);
             birb.setVelocity(0.0f);
 
+            score = 0;
             birb.initiateGravity();
+
         } else if (obstacle.getObstacleBotPosition().x == birb.getBirbPosition().x - birb.getBirbPosition().width) {
             score++;
             System.out.println("Score " + score);
