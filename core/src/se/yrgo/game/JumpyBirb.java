@@ -111,6 +111,7 @@ public class JumpyBirb implements Screen {
     // Dispose of used assets to clear up memory
     @Override
     public void dispose() {
-        batch.dispose();
+        birb.dispose();
+        obstacle.dispose();
     }
 }
