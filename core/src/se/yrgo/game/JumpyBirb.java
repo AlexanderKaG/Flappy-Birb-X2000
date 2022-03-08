@@ -3,6 +3,7 @@ package se.yrgo.game;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import se.yrgo.game.sprites.Birb;
@@ -10,14 +11,16 @@ import se.yrgo.game.sprites.Obstacle;
 
 import java.util.concurrent.ThreadLocalRandom;
 
-public class JumpyBirb extends ApplicationAdapter {
+public class JumpyBirb implements Screen {
+    private final JumpyBirbGame game;
+
     private SpriteBatch batch;
     private Birb birb;
     private Obstacle obstacle;
     private int score;
 
-    @Override
-    public void create() {
+    public JumpyBirb(final JumpyBirbGame game) {
+        this.game = game;
         batch = new SpriteBatch();
 
         birb = new Birb();
@@ -27,8 +30,7 @@ public class JumpyBirb extends ApplicationAdapter {
         obstacle.create();
     }
 
-    @Override
-    public void render() {
+    public void render(float delta) {
         // Calls the function to jump when user press space/mouse click
         handleUserInput();
 
@@ -81,6 +83,31 @@ public class JumpyBirb extends ApplicationAdapter {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public void show() {
+
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
     }
 
     // Dispose of used assets to clear up memory
