@@ -22,4 +22,10 @@ public class JumpyBirbGame extends Game {
     public BitmapFont getFont() {
         return font;
     }
+
+    @Override
+    public void dispose() {
+        spritebatch.dispose();
+        font.dispose();
+    }
 }
