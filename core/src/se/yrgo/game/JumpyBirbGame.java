@@ -14,4 +14,12 @@ public class JumpyBirbGame extends Game {
         font = new BitmapFont();
         this.setScreen(new MainMenuScreen(this));
     }
+
+    public SpriteBatch getSpritebatch() {
+        return spritebatch;
+    }
+
+    public BitmapFont getFont() {
+        return font;
+    }
 }
