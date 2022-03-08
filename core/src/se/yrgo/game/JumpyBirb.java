@@ -14,7 +14,7 @@ public class JumpyBirb extends ApplicationAdapter {
     private SpriteBatch batch;
     private Birb birb;
     private Obstacle obstacle;
-    private int score = 0;
+    private int score;
 
     @Override
     public void create() {
@@ -53,7 +53,7 @@ public class JumpyBirb extends ApplicationAdapter {
             birb.setVelocity(0.0f);
 
             birb.initiateGravity();
-        } else if (obstacle.getObstacleBotPosition().x == birb.getBirbPosition().x) {
+        } else if (obstacle.getObstacleBotPosition().x == birb.getBirbPosition().x - birb.getBirbPosition().width) {
             score++;
             System.out.println("Score " + score);
         }
