@@ -6,28 +6,28 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Birb {
-    private Texture img;
-    private Rectangle position;
+    private Texture birbImage;
+    private Rectangle birbPosition;
     private float gravity;
     private float velocity = 0.0f;
 
     public void create() {
-        img = new Texture(Gdx.files.internal("Pixelbird.png"));
+        birbImage = new Texture(Gdx.files.internal("Pixelbird.png"));
 
-        position = new Rectangle();
-        position.x = 100;
-        position.y = 400;
+        birbPosition = new Rectangle();
+        birbPosition.x = 100;
+        birbPosition.y = 400;
+        birbPosition.width = 100;
+        birbPosition.height = 100;
     }
 
     public void update() {
         velocity += gravity;
-        position.y -= velocity;
+        birbPosition.y -= velocity;
     }
 
     public void jump() {
-        if(Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
-            velocity = -5;
-        }
+        velocity = -5;
     }
 
     public void initiateGravity() {
@@ -36,12 +36,12 @@ public class Birb {
         }
     }
 
-    public Texture getImg() {
-        return img;
+    public Texture getBirbImageg() {
+        return birbImage;
     }
 
-    public Rectangle getPosition() {
-        return position;
+    public Rectangle getBirbPosition() {
+        return birbPosition;
     }
 
     public void setGravity(float gravity) {
@@ -53,6 +53,6 @@ public class Birb {
     }
 
     public void dispose() {
-        img.dispose();
+        birbImage.dispose();
     }
 }
