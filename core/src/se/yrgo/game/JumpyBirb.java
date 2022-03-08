@@ -49,12 +49,11 @@ public class JumpyBirb implements Screen {
         if (hitsGround(birb) ||
                 birb.getBirbPosition().overlaps(obstacle.getObstacleBotPosition()) ||
                 birb.getBirbPosition().overlaps(obstacle.getObstacleTopPosition())) {
-            birb.getBirbPosition().setPosition(100, 400);
-            birb.setGravity(0.0f);
-            birb.setVelocity(0.0f);
 
             score = 0;
-            birb.initiateGravity();
+
+            game.setScreen(new EndMenuScreen(game));
+            dispose();
 
         } else if (obstacle.getObstacleBotPosition().x == birb.getBirbPosition().x - birb.getBirbPosition().width) {
             score++;
