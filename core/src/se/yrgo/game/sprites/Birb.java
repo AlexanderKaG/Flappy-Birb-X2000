@@ -11,7 +11,7 @@ public class Birb {
     private Rectangle birbPosition;
     private float gravity;
     private float velocity = 0.0f;
-    private Sound jumpSound;
+    private Sound jumpSound, deathSound;
 
     public void create() {
         birbImage = new Texture(Gdx.files.internal("Pixelbird.png"));
@@ -23,6 +23,7 @@ public class Birb {
         birbPosition.height = 100;
 
         jumpSound = Gdx.audio.newSound(Gdx.files.internal("small-hit-game.wav"));
+        deathSound = Gdx.audio.newSound(Gdx.files.internal("death.wav"));
     }
 
     public void update() {
@@ -49,16 +50,13 @@ public class Birb {
         return birbPosition;
     }
 
-    public void setGravity(float gravity) {
-        this.gravity = gravity;
-    }
-
-    public void setVelocity(float velocity) {
-        this.velocity = velocity;
+    public void playDeathSound() {
+        deathSound.play(0.25f);
     }
 
     public void dispose() {
         birbImage.dispose();
         jumpSound.dispose();
+        deathSound.dispose();
     }
 }
