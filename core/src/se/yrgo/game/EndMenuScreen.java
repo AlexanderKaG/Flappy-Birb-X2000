@@ -13,9 +13,9 @@ public class EndMenuScreen implements Screen {
 
     }
 
-    public EndMenuScreen(JumpyBirbGame game, int score) {
+    public EndMenuScreen(JumpyBirbGame game, int endScore) {
         this.game = game;
-        this.endScore = score;
+        this.endScore = endScore;
     }
 
     @Override
