@@ -6,9 +6,13 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MainMenuScreen implements Screen {
-    private final JumpyBirbGame game;
+    private JumpyBirbGame game;
 
-    public MainMenuScreen(final JumpyBirbGame game) {
+    public MainMenuScreen() {
+
+    }
+
+    public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
     }
 
