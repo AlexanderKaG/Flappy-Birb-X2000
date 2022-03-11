@@ -2,6 +2,7 @@ package se.yrgo.game.sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
@@ -10,6 +11,7 @@ public class Birb {
     private Rectangle birbPosition;
     private float gravity;
     private float velocity = 0.0f;
+    private Sound jumpSound;
 
     public void create() {
         birbImage = new Texture(Gdx.files.internal("Pixelbird.png"));
@@ -19,6 +21,8 @@ public class Birb {
         birbPosition.y = 400;
         birbPosition.width = 100;
         birbPosition.height = 100;
+
+        jumpSound = Gdx.audio.newSound(Gdx.files.internal("small-hit-game.wav"));
     }
 
     public void update() {
@@ -28,6 +32,7 @@ public class Birb {
 
     public void jump() {
         velocity = -5;
+        jumpSound.play(0.25f);
     }
 
     public void initiateGravity() {
@@ -54,5 +59,6 @@ public class Birb {
 
     public void dispose() {
         birbImage.dispose();
+        jumpSound.dispose();
     }
 }
