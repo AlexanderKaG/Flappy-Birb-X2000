@@ -45,9 +45,7 @@ public class JumpyBirb implements Screen {
         ScreenUtils.clear(1, 0, 0, 1);
 
         batch.begin();
-
         batch.draw(background, 0,0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
-
         batch.draw(obstacle.getObstacleBotImage(), obstacle.getObstacleBotPosition().x, obstacle.getObstacleBotPosition().y);
         batch.draw(obstacle.getObstacleTopImage(), obstacle.getObstacleTopPosition().x, obstacle.getObstacleTopPosition().y);
         batch.draw(birb.getBirbImageg(), birb.getBirbPosition().x, birb.getBirbPosition().y);
