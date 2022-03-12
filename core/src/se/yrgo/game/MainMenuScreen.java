@@ -3,10 +3,12 @@ package se.yrgo.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MainMenuScreen implements Screen {
     private JumpyBirbGame game;
+    private Texture startBackground;
 
     public MainMenuScreen() {
 
@@ -14,6 +16,7 @@ public class MainMenuScreen implements Screen {
 
     public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
+        startBackground = new Texture(Gdx.files.internal("NewBackground.png"));
     }
 
     @Override
@@ -21,6 +24,7 @@ public class MainMenuScreen implements Screen {
         ScreenUtils.clear(1, 0, 0, 1);
 
         game.getSpritebatch().begin();
+        game.getSpritebatch().draw(startBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         game.getFont().draw(game.getSpritebatch(), "Jumpy Birb X2000", 300, 600);
         game.getFont().draw(game.getSpritebatch(), "Tap anywhere or press space to begin", 300, 500);
         game.getSpritebatch().end();
