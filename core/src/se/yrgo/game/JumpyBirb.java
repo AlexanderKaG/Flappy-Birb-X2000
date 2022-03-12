@@ -11,14 +11,18 @@ import se.yrgo.game.sprites.Obstacle;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class JumpyBirb implements Screen {
-    private final JumpyBirbGame game;
+    private JumpyBirbGame game;
 
-    private final SpriteBatch batch;
-    private final Birb birb;
-    private final Obstacle obstacle;
+    private SpriteBatch batch;
+    private Birb birb;
+    private Obstacle obstacle;
     private int score;
 
-    public JumpyBirb(final JumpyBirbGame game) {
+    public JumpyBirb() {
+
+    }
+
+    public JumpyBirb(JumpyBirbGame game) {
         this.game = game;
         batch = new SpriteBatch();
 
@@ -50,14 +54,11 @@ public class JumpyBirb implements Screen {
                 birb.getBirbPosition().overlaps(obstacle.getObstacleBotPosition()) ||
                 birb.getBirbPosition().overlaps(obstacle.getObstacleTopPosition())) {
 
-            score = 0;
+            birb.playDeathSound();
 
-            game.setScreen(new EndMenuScreen(game));
-            dispose();
-
+            game.setScreen(new EndMenuScreen(game, score));
         } else if (obstacle.getObstacleBotPosition().x == birb.getBirbPosition().x - birb.getBirbPosition().width) {
             score++;
-            System.out.println("Score " + score);
         }
 
         if (obstacle.getObstacleBotPosition().x < -200) {
@@ -69,9 +70,8 @@ public class JumpyBirb implements Screen {
         batch.end();
     }
 
-
     private void handleUserInput() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.justTouched()) {
             birb.jump();
         }
     }

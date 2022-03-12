@@ -6,9 +6,13 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MainMenuScreen implements Screen {
-    private final JumpyBirbGame game;
+    private JumpyBirbGame game;
 
-    public MainMenuScreen(final JumpyBirbGame game) {
+    public MainMenuScreen() {
+
+    }
+
+    public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
     }
 
@@ -21,7 +25,7 @@ public class MainMenuScreen implements Screen {
         game.getFont().draw(game.getSpritebatch(), "Tap anywhere or press space to begin", 300, 500);
         game.getSpritebatch().end();
 
-        if (Gdx.input.isTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+        if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             game.setScreen(new JumpyBirb(game));
             dispose();
         }
