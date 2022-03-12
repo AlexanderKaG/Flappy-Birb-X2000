@@ -47,6 +47,10 @@ public class JumpyBirb implements Screen {
         obstacle.update();
         birb.update();
 
+        game.getSpritebatch().begin();
+        game.getFont().draw(game.getSpritebatch(), Integer.toString(score), 100, 700);
+        game.getSpritebatch().end();
+
         // Activates gravity when space is pressed.
         birb.initiateGravity();
 
