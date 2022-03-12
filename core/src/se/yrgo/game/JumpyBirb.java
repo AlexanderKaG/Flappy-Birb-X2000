@@ -71,7 +71,7 @@ public class JumpyBirb implements Screen {
     }
 
     private void handleUserInput() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.justTouched()) {
             birb.jump();
         }
     }

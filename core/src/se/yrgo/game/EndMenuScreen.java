@@ -27,7 +27,7 @@ public class EndMenuScreen implements Screen {
         game.getFont().draw(game.getSpritebatch(), "Tap anywhere or press space to restart", 300, 500);
         game.getSpritebatch().end();
 
-        if (Gdx.input.isTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+        if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             game.setScreen(new JumpyBirb(game));
             dispose();
         }
