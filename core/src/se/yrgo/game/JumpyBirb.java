@@ -35,7 +35,7 @@ public class JumpyBirb implements Screen {
         obstacle = new Obstacle();
         obstacle.create();
 
-        background = new Texture(Gdx.files.internal("Background.png"));
+        background = new Texture(Gdx.files.internal("NewBackground.png"));
     }
 
     public void render(float delta) {
