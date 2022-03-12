@@ -3,6 +3,8 @@ package se.yrgo.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import se.yrgo.game.sprites.Birb;
@@ -17,6 +19,7 @@ public class JumpyBirb implements Screen {
     private Birb birb;
     private Obstacle obstacle;
     private int score;
+    private Texture background;
 
     public JumpyBirb() {
 
@@ -31,6 +34,8 @@ public class JumpyBirb implements Screen {
 
         obstacle = new Obstacle();
         obstacle.create();
+
+        background = new Texture(Gdx.files.internal("NewBackground.png"));
     }
 
     public void render(float delta) {
@@ -40,6 +45,9 @@ public class JumpyBirb implements Screen {
         ScreenUtils.clear(1, 0, 0, 1);
 
         batch.begin();
+
+        batch.draw(background, 0,0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+
         batch.draw(obstacle.getObstacleBotImage(), obstacle.getObstacleBotPosition().x, obstacle.getObstacleBotPosition().y);
         batch.draw(obstacle.getObstacleTopImage(), obstacle.getObstacleTopPosition().x, obstacle.getObstacleTopPosition().y);
         batch.draw(birb.getBirbImageg(), birb.getBirbPosition().x, birb.getBirbPosition().y);
