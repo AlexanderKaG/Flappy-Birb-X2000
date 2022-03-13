@@ -4,22 +4,18 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import se.yrgo.game.sprites.Birb;
 import se.yrgo.game.sprites.Obstacle;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class JumpyBirb implements Screen {
     private JumpyBirbGame game;
-
     private SpriteBatch batch;
     private Birb birb;
     private Obstacle obstacle;
-    private int score;
     private Texture gameBackground;
+    private int score;
 
     public JumpyBirb() {
 
@@ -39,42 +35,34 @@ public class JumpyBirb implements Screen {
     }
 
     public void render(float delta) {
-        // Calls the function to jump when user press space/mouse click
+        ScreenUtils.clear(1, 0, 0, 1);
         handleUserInput();
 
-        ScreenUtils.clear(1, 0, 0, 1);
-
         batch.begin();
-        batch.draw(gameBackground, 0,0, Gdx.graphics.getWidth(),Gdx.graphics.getHeight());
+        batch.draw(gameBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch.draw(obstacle.getObstacleBotImage(), obstacle.getObstacleBotPosition().x, obstacle.getObstacleBotPosition().y);
         batch.draw(obstacle.getObstacleTopImage(), obstacle.getObstacleTopPosition().x, obstacle.getObstacleTopPosition().y);
-        batch.draw(birb.getBirbImageg(), birb.getBirbPosition().x, birb.getBirbPosition().y);
+        batch.draw(birb.getBirbImage(), birb.getBirbPosition().x, birb.getBirbPosition().y);
 
         obstacle.update();
         birb.update();
 
+        if (obstacle.getObstacleBotPosition().x < -obstacle.getObstacleBotPosition().width) {
+            obstacle.generateObstacleStartAndGapPosition(obstacle.getObstacleBotPosition(), obstacle.getObstacleTopPosition());
+        }
+
         game.getSpritebatch().begin();
         game.getFont().draw(game.getSpritebatch(), Integer.toString(score), 100, 700);
         game.getSpritebatch().end();
-
-        // Activates gravity when space is pressed.
-        birb.initiateGravity();
 
         if (hitsGround(birb) ||
                 birb.getBirbPosition().overlaps(obstacle.getObstacleBotPosition()) ||
                 birb.getBirbPosition().overlaps(obstacle.getObstacleTopPosition())) {
 
             birb.playDeathSound();
-
             game.setScreen(new EndMenuScreen(game, score));
-        } else if (obstacle.getObstacleBotPosition().x == birb.getBirbPosition().x - birb.getBirbPosition().width) {
+        } else if (obstacle.getObstacleBotPosition().x == birb.getBirbPosition().x - obstacle.getObstacleBotPosition().width) {
             score++;
-        }
-
-        if (obstacle.getObstacleBotPosition().x < -200) {
-            int randomNumber = ThreadLocalRandom.current().nextInt(-150, 400);
-            obstacle.getObstacleBotPosition().setPosition(800, randomNumber - 450);
-            obstacle.getObstacleTopPosition().setPosition(800, randomNumber + 450);
         }
 
         batch.end();
@@ -84,13 +72,15 @@ public class JumpyBirb implements Screen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.justTouched()) {
             birb.jump();
         }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.justTouched()) {
+            birb.initiateGravity();
+            obstacle.spawnObstacles();
+        }
     }
 
     private static boolean hitsGround(Birb birb) {
-        if (birb.getBirbPosition().y < -20) {
-            return true;
-        }
-        return false;
+        return birb.getBirbPosition().y < -20;
     }
 
     @Override
@@ -118,7 +108,6 @@ public class JumpyBirb implements Screen {
 
     }
 
-    // Dispose of used assets to clear up memory
     @Override
     public void dispose() {
         birb.dispose();
