@@ -12,12 +12,12 @@ public class Obstacle {
     private int obstacleSpeed;
 
     public void create() {
-        obstacleBotImage = new Texture(Gdx.files.internal("BetterTubeBot.png"));
+        obstacleBotImage = new Texture(Gdx.files.internal("FixedTubeBot.png"));
         obstacleBotPosition = new Rectangle();
         obstacleBotPosition.width = 200;
         obstacleBotPosition.height = 600;
 
-        obstacleTopImage = new Texture(Gdx.files.internal("BetterTubeTop.png"));
+        obstacleTopImage = new Texture(Gdx.files.internal("FixedTopTube.png"));
         obstacleTopPosition = new Rectangle();
         obstacleTopPosition.width = 200;
         obstacleTopPosition.height = 600;
