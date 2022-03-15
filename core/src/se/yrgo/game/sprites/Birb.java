@@ -1,7 +1,6 @@
 package se.yrgo.game.sprites;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
@@ -37,12 +36,10 @@ public class Birb {
     }
 
     public void initiateGravity() {
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.isTouched()) {
-            this.gravity = 0.2f;
-        }
+        this.gravity = 0.2f;
     }
 
-    public Texture getBirbImageg() {
+    public Texture getBirbImage() {
         return birbImage;
     }
 
