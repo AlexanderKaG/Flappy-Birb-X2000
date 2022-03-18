@@ -31,12 +31,12 @@ public class Birb {
     }
 
     public void jump() {
-        velocity = -5;
+        velocity = -10;
         jumpSound.play(0.25f);
     }
 
     public void initiateGravity() {
-        this.gravity = 0.2f;
+        this.gravity = 0.5f;
     }
 
     public Texture getBirbImage() {
