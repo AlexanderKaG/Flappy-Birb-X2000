@@ -3,12 +3,14 @@ package se.yrgo.game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MainMenuScreen implements Screen {
     private JumpyBirbGame game;
     private Texture startBackground;
+    private Music music;
 
     public MainMenuScreen() {
 
@@ -17,6 +19,10 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
         startBackground = new Texture(Gdx.files.internal("NewBackground.png"));
+        music = Gdx.audio.newMusic(Gdx.files.internal("man-is-he-mega.mp3"));
+        music.setLooping(true);
+        music.setVolume(0.1f);
+        music.play();
     }
 
     @Override
