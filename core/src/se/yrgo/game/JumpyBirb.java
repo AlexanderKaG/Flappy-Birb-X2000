@@ -49,7 +49,7 @@ public class JumpyBirb implements Screen {
             batch.draw(obstacle.getImageBotObstacle(), obstacle.getBotObstaclePosition().x, obstacle.getBotObstaclePosition().y);
             obstacle.update();
 
-            if (obstacle.getTopObstaclePosition().x == birb.getBirbPosition().x - 200) {
+            if (obstacle.getTopObstaclePosition().x == birb.getPositionBirb().x - 200) {
                 score++;
             }
 
@@ -58,15 +58,15 @@ public class JumpyBirb implements Screen {
             }
 
             if (hitsGround(birb) ||
-                    birb.getBirbPosition().overlaps(obstacle.getTopObstaclePosition()) ||
-                    birb.getBirbPosition().overlaps(obstacle.getBotObstaclePosition())) {
+                    birb.getPositionBirb().overlaps(obstacle.getTopObstaclePosition()) ||
+                    birb.getPositionBirb().overlaps(obstacle.getBotObstaclePosition())) {
 
                 birb.playDeathSound();
                 game.setScreen(new EndMenuScreen(game, score));
             }
         }
 
-        batch.draw(birb.getBirbImage(), birb.getBirbPosition().x, birb.getBirbPosition().y);
+        batch.draw(birb.getImageBirb(), birb.getPositionBirb().x, birb.getPositionBirb().y);
         birb.update();
 
         game.getSpritebatch().begin();
@@ -87,7 +87,7 @@ public class JumpyBirb implements Screen {
     }
 
     private static boolean hitsGround(Birb birb) {
-        return birb.getBirbPosition().y < -20;
+        return birb.getPositionBirb().y < -20;
     }
 
     @Override
