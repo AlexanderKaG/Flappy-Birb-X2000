@@ -12,7 +12,7 @@ public class Obstacle {
     private ThreadLocalRandom randomNumber;
     private final int GAP_IN_BETWEEN_OBSTACLES = 225;
     private final int LOWEST_OBSTACLE_GAP = 100;
-    public static int width = 200;
+    public static final int WIDTH = 200;
 
     public Obstacle() {
 

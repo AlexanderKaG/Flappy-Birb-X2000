@@ -35,7 +35,7 @@ public class JumpyBirb implements Screen {
         obstacles = new Array<>();
 
         for (int i = 1; i <= NUMBER_OF_OBSTACLES; i++) {
-            obstacles.add(new Obstacle(i * SPACE_BETWEEN_OBSTACLES + Obstacle.width));
+            obstacles.add(new Obstacle(i * SPACE_BETWEEN_OBSTACLES + Obstacle.WIDTH));
         }
     }
 
@@ -57,7 +57,7 @@ public class JumpyBirb implements Screen {
             }
 
             if (obstacle.getTopObstaclePosition().x < -obstacle.getTopObstaclePosition().width) {
-                obstacle.generateObstacleStartAndGapPosition((obstacle.getTopObstaclePosition().x - 200) + (Obstacle.width + SPACE_BETWEEN_OBSTACLES * NUMBER_OF_OBSTACLES));
+                obstacle.generateObstacleStartAndGapPosition((obstacle.getTopObstaclePosition().x - 200) + (Obstacle.WIDTH + SPACE_BETWEEN_OBSTACLES * NUMBER_OF_OBSTACLES));
             }
 
             if (hitsGround(birb) ||
@@ -92,7 +92,7 @@ public class JumpyBirb implements Screen {
     }
 
     private static boolean hitsGround(Birb birb) {
-        return birb.getPositionBirb().y < -20;
+        return birb.getPositionBirb().y <= -20;
     }
 
     private static void moveObstacles() {
@@ -130,7 +130,9 @@ public class JumpyBirb implements Screen {
 
     @Override
     public void dispose() {
+        batch.dispose();
         birb.dispose();
+        gameBackground.dispose();
         for (Obstacle obstacle : obstacles) {
             obstacle.dispose();
         }

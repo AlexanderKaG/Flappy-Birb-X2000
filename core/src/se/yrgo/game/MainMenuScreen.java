@@ -10,7 +10,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MainMenuScreen implements Screen {
     private JumpyBirbGame game;
     private Texture startBackground;
-    private Music music;
+    private Music backgroundMusic;
 
     public MainMenuScreen() {
 
@@ -19,10 +19,10 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
         startBackground = new Texture(Gdx.files.internal("NewBackground.png"));
-        music = Gdx.audio.newMusic(Gdx.files.internal("man-is-he-mega.mp3"));
-        music.setLooping(true);
-        music.setVolume(0.1f);
-        music.play();
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("man-is-he-mega.mp3"));
+        backgroundMusic.setLooping(true);
+        backgroundMusic.setVolume(0.1f);
+        backgroundMusic.play();
     }
 
     @Override
@@ -68,6 +68,6 @@ public class MainMenuScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        startBackground.dispose();
     }
 }

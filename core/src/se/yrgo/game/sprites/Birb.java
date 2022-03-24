@@ -14,7 +14,6 @@ public class Birb {
 
     public void create() {
         imageBirb = new Texture(Gdx.files.internal("Pixelbird.png"));
-
         positionBirb = new Rectangle();
         positionBirb.x = 100;
         positionBirb.y = 400;
