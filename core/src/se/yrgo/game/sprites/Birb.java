@@ -12,11 +12,15 @@ public class Birb {
     private float velocity = 0.0f;
     private Sound jumpSound, deathSound;
 
-    public void create() {
+    public Birb() {
+
+    }
+
+    public Birb(int x, int y) {
         imageBirb = new Texture(Gdx.files.internal("Pixelbird.png"));
         positionBirb = new Rectangle();
-        positionBirb.x = 100;
-        positionBirb.y = 400;
+        positionBirb.x = x;
+        positionBirb.y = y;
         positionBirb.width = imageBirb.getWidth();
         positionBirb.height = imageBirb.getHeight();
 

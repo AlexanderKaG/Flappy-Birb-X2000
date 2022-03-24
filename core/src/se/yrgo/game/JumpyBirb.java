@@ -29,8 +29,7 @@ public class JumpyBirb implements Screen {
     public JumpyBirb(JumpyBirbGame game) {
         this.game = game;
         batch = new SpriteBatch();
-        birb = new Birb();
-        birb.create();
+        birb = new Birb(100, 400);
         gameBackground = new Texture(Gdx.files.internal("NewBackground.png"));
         obstacles = new Array<>();
 
