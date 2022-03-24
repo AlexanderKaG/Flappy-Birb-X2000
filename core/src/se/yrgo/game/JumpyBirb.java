@@ -32,7 +32,7 @@ public class JumpyBirb implements Screen {
         birb = new Birb();
         birb.create();
         gameBackground = new Texture(Gdx.files.internal("NewBackground.png"));
-        obstacles = new Array<Obstacle>();
+        obstacles = new Array<>();
 
         for (int i = 1; i <= NUMBER_OF_OBSTACLES; i++) {
             obstacles.add(new Obstacle(i * SPACE_BETWEEN_OBSTACLES + Obstacle.width));

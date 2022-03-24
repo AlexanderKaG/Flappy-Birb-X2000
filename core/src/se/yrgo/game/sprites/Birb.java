@@ -26,7 +26,7 @@ public class Birb {
     }
 
     public void update() {
-        velocity -= gravity;
+        velocity += gravity;
         positionBirb.y += velocity;
     }
 
@@ -36,7 +36,7 @@ public class Birb {
     }
 
     public void initiateGravity() {
-        this.gravity = 0.5f;
+        this.gravity = -0.5f;
     }
 
     public Texture getImageBirb() {
