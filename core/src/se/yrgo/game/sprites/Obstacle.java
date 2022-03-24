@@ -36,12 +36,6 @@ public class Obstacle {
         positionBotObstacle.height = imageBotObstacle.getHeight();
     }
 
-    public void update() {
-        int speedOfObstacles = 5;
-        positionTopObstacle.x -= speedOfObstacles;
-        positionBotObstacle.x -= speedOfObstacles;
-    }
-
     public Texture getImageTopObstacle() {
         return imageTopObstacle;
     }
