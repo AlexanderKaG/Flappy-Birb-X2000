@@ -64,6 +64,6 @@ public class EndMenuScreen implements Screen {
 
     @Override
     public void dispose() {
-
+        endBackground.dispose();
     }
 }

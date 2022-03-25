@@ -7,57 +7,58 @@ import com.badlogic.gdx.math.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Obstacle {
-    private Texture obstacleBotImage, obstacleTopImage;
-    private Rectangle obstacleBotPosition, obstacleTopPosition;
-    private int obstacleSpeed;
+    private Texture imageTopObstacle, imageBotObstacle;
+    private Rectangle positionTopObstacle, positionBotObstacle;
+    private ThreadLocalRandom randomNumber;
+    private final int GAP_IN_BETWEEN_OBSTACLES = 225;
+    private final int LOWEST_OBSTACLE_GAP = 100;
+    public static final int WIDTH = 200;
 
-    public void create() {
-        obstacleBotImage = new Texture(Gdx.files.internal("FixedTubeBot.png"));
-        obstacleBotPosition = new Rectangle();
-        obstacleBotPosition.width = 200;
-        obstacleBotPosition.height = 600;
+    public Obstacle() {
 
-        obstacleTopImage = new Texture(Gdx.files.internal("FixedTopTube.png"));
-        obstacleTopPosition = new Rectangle();
-        obstacleTopPosition.width = 200;
-        obstacleTopPosition.height = 600;
-
-        generateObstacleStartAndGapPosition(obstacleBotPosition, obstacleTopPosition);
     }
 
-    public void update() {
-        obstacleBotPosition.x -= obstacleSpeed;
-        obstacleTopPosition.x -= obstacleSpeed;
+    public Obstacle(float x) {
+        randomNumber = ThreadLocalRandom.current();
+
+        imageTopObstacle = new Texture(Gdx.files.internal("FixedTopTube.png"));
+        positionTopObstacle = new Rectangle();
+        positionTopObstacle.x = x;
+        positionTopObstacle.y = randomNumber.nextInt(0, 400) + GAP_IN_BETWEEN_OBSTACLES + LOWEST_OBSTACLE_GAP;
+        positionTopObstacle.width = imageTopObstacle.getWidth();
+        positionTopObstacle.height = imageTopObstacle.getHeight();
+
+        imageBotObstacle = new Texture(Gdx.files.internal("FixedTubeBot.png"));
+        positionBotObstacle = new Rectangle();
+        positionBotObstacle.x = x;
+        positionBotObstacle.y = positionTopObstacle.y - GAP_IN_BETWEEN_OBSTACLES - imageBotObstacle.getHeight();
+        positionBotObstacle.width = imageBotObstacle.getWidth();
+        positionBotObstacle.height = imageBotObstacle.getHeight();
     }
 
-    public Texture getObstacleBotImage() {
-        return obstacleBotImage;
+    public Texture getImageTopObstacle() {
+        return imageTopObstacle;
     }
 
-    public Texture getObstacleTopImage() {
-        return obstacleTopImage;
+    public Texture getImageBotObstacle() {
+        return imageBotObstacle;
     }
 
-    public void spawnObstacles() {
-        this.obstacleSpeed = 5;
+    public Rectangle getTopObstaclePosition() {
+        return positionTopObstacle;
     }
 
-    public Rectangle getObstacleBotPosition() {
-        return obstacleBotPosition;
+    public Rectangle getBotObstaclePosition() {
+        return positionBotObstacle;
     }
 
-    public Rectangle getObstacleTopPosition() {
-        return obstacleTopPosition;
-    }
-
-    public void generateObstacleStartAndGapPosition(Rectangle obstacleBotPosition, Rectangle obstacleTopPosition) {
-        int randomNumber = ThreadLocalRandom.current().nextInt(-150, 400);
-        obstacleBotPosition.setPosition(800, randomNumber - 400);
-        obstacleTopPosition.setPosition(800, randomNumber + 400);
+    public void generateObstacleStartAndGapPosition(float x) {
+        positionTopObstacle.setPosition(x, randomNumber.nextInt(0, 400) + GAP_IN_BETWEEN_OBSTACLES + LOWEST_OBSTACLE_GAP);
+        positionBotObstacle.setPosition(x, positionTopObstacle.y - GAP_IN_BETWEEN_OBSTACLES - imageBotObstacle.getHeight());
     }
 
     public void dispose() {
-        obstacleBotImage.dispose();
-        obstacleTopImage.dispose();
+        imageTopObstacle.dispose();
+        imageBotObstacle.dispose();
     }
 }
