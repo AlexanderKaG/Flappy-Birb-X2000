@@ -8,21 +8,17 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class MainMenuScreen implements Screen {
-    private JumpyBirbGame game;
-    private Texture startBackground;
-    private Music backgroundMusic;
-
-    public MainMenuScreen() {
-
-    }
+    private final JumpyBirbGame game;
+    private final Texture startBackground;
+    private final Music backgroundMusic;
 
     public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
-        startBackground = new Texture(Gdx.files.internal("NewBackground.png"));
-        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("man-is-he-mega.mp3"));
-        backgroundMusic.setLooping(true);
-        backgroundMusic.setVolume(0.1f);
-        backgroundMusic.play();
+        this.startBackground = new Texture(Gdx.files.internal("NewBackground.png"));
+        this.backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("man-is-he-mega.mp3"));
+        this.backgroundMusic.setLooping(true);
+        this.backgroundMusic.setVolume(0.1f);
+        this.backgroundMusic.play();
     }
 
     @Override

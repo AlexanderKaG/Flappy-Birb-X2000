@@ -7,16 +7,12 @@ import com.badlogic.gdx.math.Rectangle;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Obstacle {
-    private Texture imageTopObstacle, imageBotObstacle;
-    private Rectangle positionTopObstacle, positionBotObstacle;
-    private ThreadLocalRandom randomNumber;
+    private final Texture imageTopObstacle, imageBotObstacle;
+    private final Rectangle positionTopObstacle, positionBotObstacle;
+    private final ThreadLocalRandom randomNumber;
     private final int GAP_IN_BETWEEN_OBSTACLES = 225;
     private final int LOWEST_OBSTACLE_GAP = 100;
     public static final int WIDTH = 200;
-
-    public Obstacle() {
-
-    }
 
     public Obstacle(float x) {
         randomNumber = ThreadLocalRandom.current();

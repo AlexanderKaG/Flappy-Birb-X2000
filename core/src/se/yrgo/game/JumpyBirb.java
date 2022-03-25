@@ -11,27 +11,22 @@ import se.yrgo.game.sprites.Birb;
 import se.yrgo.game.sprites.Obstacle;
 
 public class JumpyBirb implements Screen {
-    private JumpyBirbGame game;
-    private SpriteBatch batch;
-    private Birb birb;
-    private Texture gameBackground;
-    private Array<Obstacle> obstacles;
+    private final JumpyBirbGame game;
+    private final SpriteBatch batch;
+    private final Birb birb;
+    private final Texture gameBackground;
+    private final Array<Obstacle> obstacles;
     private int score;
     private final int SPACE_BETWEEN_OBSTACLES = 600;
     private final int NUMBER_OF_OBSTACLES = 4;
     private static int speedOfObstacles;
 
-
-    public JumpyBirb() {
-
-    }
-
     public JumpyBirb(JumpyBirbGame game) {
         this.game = game;
-        batch = new SpriteBatch();
-        birb = new Birb(100, 400);
-        gameBackground = new Texture(Gdx.files.internal("NewBackground.png"));
-        obstacles = new Array<>();
+        this.batch = new SpriteBatch();
+        this.birb = new Birb(100, 400);
+        this.gameBackground = new Texture(Gdx.files.internal("NewBackground.png"));
+        this.obstacles = new Array<>();
 
         for (int i = 1; i <= NUMBER_OF_OBSTACLES; i++) {
             obstacles.add(new Obstacle(i * SPACE_BETWEEN_OBSTACLES + Obstacle.WIDTH));
@@ -64,6 +59,7 @@ public class JumpyBirb implements Screen {
                     birb.getPositionBirb().overlaps(obstacle.getBotObstaclePosition())) {
 
                 birb.playDeathSound();
+                birb.setPositionBirbY(-19);
                 stopObstacles();
                 game.setScreen(new EndMenuScreen(game, score));
             }

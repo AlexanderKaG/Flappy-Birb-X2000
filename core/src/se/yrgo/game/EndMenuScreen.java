@@ -7,18 +7,14 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.ScreenUtils;
 
 public class EndMenuScreen implements Screen {
-    private JumpyBirbGame game;
-    private int endScore;
-    private Texture endBackground;
-
-    public EndMenuScreen() {
-
-    }
+    private final JumpyBirbGame game;
+    private final int endScore;
+    private final Texture endBackground;
 
     public EndMenuScreen(JumpyBirbGame game, int endScore) {
         this.game = game;
         this.endScore = endScore;
-        endBackground = new Texture(Gdx.files.internal("NewBackground.png"));
+        this.endBackground = new Texture(Gdx.files.internal("NewBackground.png"));
     }
 
     @Override

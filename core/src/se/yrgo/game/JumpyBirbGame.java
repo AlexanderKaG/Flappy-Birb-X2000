@@ -10,8 +10,8 @@ public class JumpyBirbGame extends Game {
 
     @Override
     public void create() {
-        spritebatch = new SpriteBatch();
-        font = new BitmapFont();
+        this.spritebatch = new SpriteBatch();
+        this.font = new BitmapFont();
         this.setScreen(new MainMenuScreen(this));
     }
 

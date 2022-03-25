@@ -6,15 +6,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Birb {
-    private Texture imageBirb;
-    private Rectangle positionBirb;
+    private final Texture imageBirb;
+    private final Rectangle positionBirb;
     private float gravity;
     private float velocity = 0.0f;
-    private Sound jumpSound, deathSound;
-
-    public Birb() {
-
-    }
+    private final Sound jumpSound, deathSound;
 
     public Birb(int x, int y) {
         imageBirb = new Texture(Gdx.files.internal("Pixelbird.png"));
@@ -48,6 +44,10 @@ public class Birb {
 
     public Rectangle getPositionBirb() {
         return positionBirb;
+    }
+
+    public void setPositionBirbY(int y) {
+        this.positionBirb.y = y;
     }
 
     public void playDeathSound() {
