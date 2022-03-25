@@ -11,6 +11,7 @@ public class MainMenuScreen implements Screen {
     private final JumpyBirbGame game;
     private final Texture startBackground;
 
+
     public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
         this.startBackground = new Texture(Gdx.files.internal("NewBackground.png"));
@@ -27,10 +28,23 @@ public class MainMenuScreen implements Screen {
         game.getSpritebatch().begin();
         game.getSpritebatch().draw(startBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         game.getFont().draw(game.getSpritebatch(), "Jumpy Birb X2000", 300, 600);
-        game.getFont().draw(game.getSpritebatch(), "Tap anywhere or press space to begin", 300, 500);
+        game.getFont().draw(game.getSpritebatch(), "easy left alt, medium right alt, hard left shift", 300, 500);
+        game.getFont().draw(game.getSpritebatch(), "Press space to begin", 300, 300);
         game.getSpritebatch().end();
 
-        if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_LEFT)) {
+            JumpyBirb.spaceBetweenObstacles = 700;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
+            JumpyBirb.spaceBetweenObstacles = 600;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT)) {
+            JumpyBirb.spaceBetweenObstacles = 500;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             game.setScreen(new JumpyBirb(game));
             dispose();
         }

@@ -17,7 +17,7 @@ public class JumpyBirb implements Screen {
     private final Texture gameBackground;
     private final Array<Obstacle> obstacles;
     private int score;
-    private final int spaceBetweenObstacles = 600;
+    public static int spaceBetweenObstacles = 600;
     private final int numberOfObstacles = 4;
     private static int speedOfObstacles;
 

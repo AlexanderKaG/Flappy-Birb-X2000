@@ -24,8 +24,21 @@ public class EndMenuScreen implements Screen {
         game.getSpritebatch().begin();
         game.getSpritebatch().draw(endBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         game.getFont().draw(game.getSpritebatch(), "Ooops... you died! Score: " + endScore, 300, 600);
-        game.getFont().draw(game.getSpritebatch(), "Tap anywhere or press space to restart", 300, 500);
+        game.getFont().draw(game.getSpritebatch(), "easy left alt, medium right alt, hard left shift", 300, 500);
+        game.getFont().draw(game.getSpritebatch(), "Tap anywhere or press space to restart", 300, 300);
         game.getSpritebatch().end();
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_LEFT)) {
+            JumpyBirb.spaceBetweenObstacles = 700;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
+            JumpyBirb.spaceBetweenObstacles = 600;
+        }
+
+        if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT)) {
+            JumpyBirb.spaceBetweenObstacles = 500;
+        }
 
         if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             game.setScreen(new JumpyBirb(game));
