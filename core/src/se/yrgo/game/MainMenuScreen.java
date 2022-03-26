@@ -11,7 +11,6 @@ public class MainMenuScreen implements Screen {
     private final JumpyBirbGame game;
     private final Texture startBackground;
 
-
     public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
         this.startBackground = new Texture(Gdx.files.internal("NewBackground.png"));
