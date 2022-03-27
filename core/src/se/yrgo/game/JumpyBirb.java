@@ -13,7 +13,6 @@ import se.yrgo.game.sprites.Obstacle;
 public class JumpyBirb implements Screen {
     private final JumpyBirbGame game;
     private final SpriteBatch batch;
-    private MainMenuScreen mainMenuScreen;
     private final Birb birb;
     private final Texture gameBackground;
     private final Array<Obstacle> obstacles;
@@ -25,7 +24,6 @@ public class JumpyBirb implements Screen {
     public JumpyBirb(JumpyBirbGame game) {
         this.game = game;
         this.batch = new SpriteBatch();
-        this.mainMenuScreen = new MainMenuScreen(game);
         this.birb = new Birb(100, 400);
         this.gameBackground = new Texture(Gdx.files.internal("NewBackground.png"));
         this.obstacles = new Array<>();

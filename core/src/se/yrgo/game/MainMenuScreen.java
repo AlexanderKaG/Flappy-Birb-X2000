@@ -12,6 +12,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MainMenuScreen implements Screen {
     private final JumpyBirbGame game;
     private final Texture startBackground, imageEasy, imageMedium, imageHard;
+    private final Music backgroundMusic;
     private final Rectangle positionEasyImage, positionMediumImage, positionHardImage;
     private final Vector2 touchImage;
     public static String difficulty = "No difficulty set";
@@ -26,15 +27,15 @@ public class MainMenuScreen implements Screen {
         this.positionMediumImage = new Rectangle(300, 250, imageMedium.getWidth(), imageMedium.getHeight());
         this.positionHardImage = new Rectangle(550, 250, imageHard.getWidth(), imageHard.getHeight());
         this.touchImage = new Vector2();
-        Music backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("man-is-he-mega.mp3"));
+        backgroundMusic = Gdx.audio.newMusic(Gdx.files.internal("man-is-he-mega.mp3"));
         backgroundMusic.setLooping(true);
         backgroundMusic.setVolume(0.1f);
-        backgroundMusic.play();
     }
 
     @Override
     public void render(float delta) {
         ScreenUtils.clear(1, 0, 0, 1);
+        backgroundMusic.play();
 
         game.getSpritebatch().begin();
         game.getSpritebatch().draw(startBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
