@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class MainMenuScreen implements Screen {
     private final JumpyBirbGame game;
     private final Texture startBackground;
+    public static String difficulty = "No difficulty set";
 
     public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
@@ -26,28 +27,37 @@ public class MainMenuScreen implements Screen {
 
         game.getSpritebatch().begin();
         game.getSpritebatch().draw(startBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        game.getFont().draw(game.getSpritebatch(), "Jumpy Birb X2000", 300, 600);
-        game.getFont().draw(game.getSpritebatch(), "easy left alt, medium right alt, hard left shift", 300, 500);
-        game.getFont().draw(game.getSpritebatch(), "Press space to begin", 300, 300);
-        game.getSpritebatch().end();
+        game.getFont().draw(game.getSpritebatch(), "Jumpy Birb X2000", 300, 700);
+        game.getFont().draw(game.getSpritebatch(), "easy left alt, medium right alt, hard left shift", 300, 550);
+        game.getFont().draw(game.getSpritebatch(), "Press space or click to begin", 300, 300);
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_LEFT)) {
             JumpyBirb.spaceBetweenObstacles = 700;
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
+            difficulty = "EASY";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.ALT_RIGHT)) {
             JumpyBirb.spaceBetweenObstacles = 600;
-        }
-
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT)) {
+            difficulty = "MEDIUM";
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.SHIFT_LEFT)) {
             JumpyBirb.spaceBetweenObstacles = 500;
+            difficulty = "HARD";
         }
 
-        if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
+        game.getFont().draw(game.getSpritebatch(), difficulty, 300, 500);
+        game.getSpritebatch().end();
+
+        if (Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
             game.setScreen(new JumpyBirb(game));
             dispose();
         }
     }
+
+//    public String getDifficulty() {
+//        return difficulty;
+//    }
+//
+//    public void setDifficulty(String difficulty) {
+//        this.difficulty = difficulty;
+//    }
 
     @Override
     public void show() {
