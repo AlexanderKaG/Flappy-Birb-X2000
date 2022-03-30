@@ -15,7 +15,7 @@ public class MainMenuScreen implements Screen {
     private final Music backgroundMusic;
     private final Rectangle positionEasyImage, positionMediumImage, positionHardImage;
     private final Vector2 touchImage;
-    public static String difficulty = "No difficulty set";
+    public static String difficulty = "Default difficulty set (MEDIUM)";
 
     public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
