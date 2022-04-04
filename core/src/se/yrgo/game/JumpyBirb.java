@@ -17,8 +17,8 @@ public class JumpyBirb implements Screen {
     private final Texture gameBackground;
     private final Array<Obstacle> obstacles;
     private int score;
-    private final int spaceBetweenObstacles = 600;
-    private final int numberOfObstacles = 4;
+    public static int spaceBetweenObstacles = 600;
+    private static final int NUMBER_OF_OBSTACLES = 4;
     private static int speedOfObstacles;
 
     public JumpyBirb(JumpyBirbGame game) {
@@ -28,7 +28,7 @@ public class JumpyBirb implements Screen {
         this.gameBackground = new Texture(Gdx.files.internal("NewBackground.png"));
         this.obstacles = new Array<>();
 
-        for (int i = 1; i <= numberOfObstacles; i++) {
+        for (int i = 1; i <= NUMBER_OF_OBSTACLES; i++) {
             obstacles.add(new Obstacle(i * spaceBetweenObstacles + Obstacle.WIDTH));
         }
     }
@@ -51,7 +51,7 @@ public class JumpyBirb implements Screen {
             }
 
             if (obstacle.getTopObstaclePosition().x < -obstacle.getTopObstaclePosition().width) {
-                obstacle.generateObstacleStartAndGapPosition((obstacle.getTopObstaclePosition().x - 200) + (Obstacle.WIDTH + spaceBetweenObstacles * numberOfObstacles));
+                obstacle.generateObstacleStartAndGapPosition((obstacle.getTopObstaclePosition().x - 200) + (Obstacle.WIDTH + spaceBetweenObstacles * NUMBER_OF_OBSTACLES));
             }
 
             if (hitsGround(birb) ||
