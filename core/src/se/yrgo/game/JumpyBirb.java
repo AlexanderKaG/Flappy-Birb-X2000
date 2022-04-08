@@ -65,7 +65,7 @@ public class JumpyBirb implements Screen {
             }
         }
 
-        batch.draw(birb.getImageBirb(), birb.getPositionBirb().x, birb.getPositionBirb().y);
+        birbAnimation();
         birb.update();
 
         game.getSpritebatch().begin();
@@ -83,6 +83,15 @@ public class JumpyBirb implements Screen {
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE) || Gdx.input.justTouched()) {
             birb.initiateGravity();
             moveObstacles();
+        }
+    }
+
+    private void birbAnimation() {
+        // replace imageHelicopter with no fire image
+        if (birb.getVelocity() > 0) {
+            batch.draw(birb.getImageHelicopter(), birb.getPositionBirb().x, birb.getPositionBirb().y);
+        } else {
+            batch.draw(birb.getImageBirb(), birb.getPositionBirb().x, birb.getPositionBirb().y);
         }
     }
 
