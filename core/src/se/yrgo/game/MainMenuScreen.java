@@ -20,10 +20,10 @@ public class MainMenuScreen implements Screen {
     public MainMenuScreen(JumpyBirbGame game) {
         this.game = game;
         this.startBackground = new Texture(Gdx.files.internal("NewBackground.png"));
-        this.imageEasy = new Texture(Gdx.files.internal("Easyy.png"));
-        this.imageMedium = new Texture(Gdx.files.internal("Mediumm.png"));
-        this.imageHard = new Texture(Gdx.files.internal("Hardd.png"));
-        this.positionEasyImage = new Rectangle(80, 290, imageEasy.getWidth(), imageEasy.getHeight()); //x + 30 , y + 20
+        this.imageEasy = new Texture(Gdx.files.internal("Easy.png"));
+        this.imageMedium = new Texture(Gdx.files.internal("Medium.png"));
+        this.imageHard = new Texture(Gdx.files.internal("Hard.png"));
+        this.positionEasyImage = new Rectangle(80, 290, imageEasy.getWidth(), imageEasy.getHeight());
         this.positionMediumImage = new Rectangle(330, 290, imageMedium.getWidth(), imageMedium.getHeight());
         this.positionHardImage = new Rectangle(580, 290, imageHard.getWidth(), imageHard.getHeight());
         this.touchImage = new Vector2();
