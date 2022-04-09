@@ -13,8 +13,8 @@ public class Birb {
     private final Sound jumpSound, deathSound;
 
     public Birb(int x, int y) {
-        imageBirb = new Texture(Gdx.files.internal("Pixelbird.png"));
-        imageHelicopter = new Texture(Gdx.files.internal("helicopter.png")); // replace imageHelicopter with no fire image
+        imageBirb = new Texture(Gdx.files.internal("purple.png"));
+        imageHelicopter = new Texture(Gdx.files.internal("purplefire.png")); // replace imageHelicopter with no fire image
         positionBirb = new Rectangle();
         positionBirb.x = x;
         positionBirb.y = y;
