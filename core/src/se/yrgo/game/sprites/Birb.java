@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
 public class Birb {
-    private final Texture imageBirb, imageHelicopter; // replace imageHelicopter with no fire image
+    private final Texture imageBirb, imageBirbFire;
     private final Rectangle positionBirb;
     private float gravity;
     private float velocity = 0.0f;
@@ -14,7 +14,7 @@ public class Birb {
 
     public Birb(int x, int y) {
         imageBirb = new Texture(Gdx.files.internal("purple.png"));
-        imageHelicopter = new Texture(Gdx.files.internal("purplefire.png")); // replace imageHelicopter with no fire image
+        imageBirbFire = new Texture(Gdx.files.internal("purplefire.png"));
         positionBirb = new Rectangle();
         positionBirb.x = x;
         positionBirb.y = y;
@@ -43,9 +43,8 @@ public class Birb {
         return imageBirb;
     }
 
-    //replace imageHelicopter with no fire image
-    public Texture getImageHelicopter() {
-        return imageHelicopter;
+    public Texture getImageBirbFire() {
+        return imageBirbFire;
     }
 
     public float getVelocity() {

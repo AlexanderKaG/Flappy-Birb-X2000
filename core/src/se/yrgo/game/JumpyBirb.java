@@ -87,9 +87,8 @@ public class JumpyBirb implements Screen {
     }
 
     private void birbAnimation() {
-        // replace imageHelicopter with no fire image
         if (birb.getVelocity() > 0) {
-            batch.draw(birb.getImageHelicopter(), birb.getPositionBirb().x, birb.getPositionBirb().y);
+            batch.draw(birb.getImageBirbFire(), birb.getPositionBirb().x, birb.getPositionBirb().y);
         } else {
             batch.draw(birb.getImageBirb(), birb.getPositionBirb().x, birb.getPositionBirb().y);
         }

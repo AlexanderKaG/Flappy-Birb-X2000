@@ -10,7 +10,7 @@ public class Obstacle {
     private final Texture imageTopObstacle, imageBotObstacle;
     private final Rectangle positionTopObstacle, positionBotObstacle;
     private final ThreadLocalRandom randomNumber;
-    private final int gapInBetweenObstacles = 225;
+    private final int gapInBetweenObstacles = 235;
     private final int lowestObstacleGap = 100;
     public static final int WIDTH = 200;
 
