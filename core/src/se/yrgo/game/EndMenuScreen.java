@@ -44,12 +44,12 @@ public class EndMenuScreen implements Screen {
 
         game.getFont().draw(game.getSpritebatch(), "High-score: " + highScore, 500, 650);
 
-        game.getFont().draw(game.getSpritebatch(), "Press space to restart", 300, 100);
+        game.getFont().draw(game.getSpritebatch(), "Press space to restart", 333, 100);
 
         mainMenuScreen.drawDifficultyImages();
         mainMenuScreen.chooseDifficulty();
 
-        game.getFont().draw(game.getSpritebatch(), MainMenuScreen.difficulty, 300, 200);
+        game.getFont().draw(game.getSpritebatch(), MainMenuScreen.difficulty, 340, 200);
         game.getSpritebatch().end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
