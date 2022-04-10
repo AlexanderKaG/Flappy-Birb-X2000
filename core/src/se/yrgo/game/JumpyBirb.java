@@ -16,7 +16,7 @@ public class JumpyBirb implements Screen {
     private final Birb birb;
     private final Texture gameBackground;
     private final Array<Obstacle> obstacles;
-    private int score;
+    private static int score;
     public static int spaceBetweenObstacles = 600;
     private static final int NUMBER_OF_OBSTACLES = 4;
     private static int speedOfObstacles;
@@ -61,7 +61,7 @@ public class JumpyBirb implements Screen {
                 birb.playDeathSound();
                 birb.setPositionBirbY(-19);
                 stopObstacles();
-                game.setScreen(new EndMenuScreen(game, score));
+                game.setScreen(new EndMenuScreen(game));
             }
         }
 
@@ -125,6 +125,14 @@ public class JumpyBirb implements Screen {
     @Override
     public void resume() {
 
+    }
+
+    public static int getScore() {
+        return score;
+    }
+
+    public static void setScore(int score) {
+        JumpyBirb.score = score;
     }
 
     @Override
