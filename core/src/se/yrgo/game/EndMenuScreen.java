@@ -31,7 +31,7 @@ public class EndMenuScreen implements Screen {
         int scoreYPositionInScoreboard = 650;
         game.getSpritebatch().begin();
         game.getSpritebatch().draw(endBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        game.getFont().draw(game.getSpritebatch(), "Ooops... you died! Score: " + JumpyBirb.getScore(), 300, 700);
+        game.getFont().draw(game.getSpritebatch(), "Ooops... you died! Score: " + JumpyBirb.getScore(), 270, 680);
         game.getFont().draw(game.getSpritebatch(), "Previous scores:", 300, scoreYPositionInScoreboard);
 
         for (int score : game.getScoreboard()) {
@@ -44,12 +44,12 @@ public class EndMenuScreen implements Screen {
 
         game.getFont().draw(game.getSpritebatch(), "High-score: " + highScore, 500, 650);
 
-        game.getFont().draw(game.getSpritebatch(), "Press space to restart", 333, 100);
+        game.getFont().draw(game.getSpritebatch(), "Press space to restart", 310, 100);
 
         mainMenuScreen.drawDifficultyImages();
         mainMenuScreen.chooseDifficulty();
 
-        game.getFont().draw(game.getSpritebatch(), MainMenuScreen.difficulty, 340, 200);
+        game.getFont().draw(game.getSpritebatch(), MainMenuScreen.difficulty, 310, 200);
         game.getSpritebatch().end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {

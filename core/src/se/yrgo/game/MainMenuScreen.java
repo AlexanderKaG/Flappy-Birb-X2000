@@ -39,12 +39,14 @@ public class MainMenuScreen implements Screen {
 
         game.getSpritebatch().begin();
         game.getFont().setColor(255, 165, 0, 250);
+        game.getFont().getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        game.getFont().getData().setScale(1.5f,1.5f);
         game.getSpritebatch().draw(startBackground, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        game.getFont().draw(game.getSpritebatch(), "JUMPY BIRB X2000", 332, 625);
+        game.getFont().draw(game.getSpritebatch(), "JUMPY BIRB X2000", 310, 630);
         drawDifficultyImages();
-        game.getFont().draw(game.getSpritebatch(), "Press space to begin", 333, 100);
+        game.getFont().draw(game.getSpritebatch(), "Press space to begin", 313, 100);
         chooseDifficulty();
-        game.getFont().draw(game.getSpritebatch(), difficulty, 340, 200);
+        game.getFont().draw(game.getSpritebatch(), difficulty, 313, 200);
         game.getSpritebatch().end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
@@ -70,9 +72,9 @@ public class MainMenuScreen implements Screen {
     }
 
     public void drawDifficultyImages() {
-        game.getFont().draw(game.getSpritebatch(), "EASY", 129, 400);
-        game.getFont().draw(game.getSpritebatch(), "MEDIUM", 370, 400);
-        game.getFont().draw(game.getSpritebatch(), "HARD", 627, 400);
+        game.getFont().draw(game.getSpritebatch(), "EASY", 123, 400);
+        game.getFont().draw(game.getSpritebatch(), "MEDIUM", 358, 400);
+        game.getFont().draw(game.getSpritebatch(), "HARD", 621, 400);
         game.getSpritebatch().draw(imageEasy, positionEasyImage.x, positionEasyImage.y);
         game.getSpritebatch().draw(imageMedium, positionMediumImage.x, positionMediumImage.y);
         game.getSpritebatch().draw(imageHard, positionHardImage.x, positionHardImage.y);
