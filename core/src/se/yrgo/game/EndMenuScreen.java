@@ -49,7 +49,7 @@ public class EndMenuScreen implements Screen {
         mainMenuScreen.drawDifficultyImages();
         mainMenuScreen.chooseDifficulty();
 
-        game.getFont().draw(game.getSpritebatch(), MainMenuScreen.difficulty, 310, 200);
+        game.getFont().draw(game.getSpritebatch(), MainMenuScreen.difficulty, 313, 200);
         game.getSpritebatch().end();
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.SPACE)) {
